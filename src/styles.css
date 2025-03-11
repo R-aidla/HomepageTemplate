@@ -1,0 +1,248 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Prevents unexpected width issues */
+}
+
+
+:root {
+    background-color: #222;
+    color: #eee;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body {
+    padding-top: 100px
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2ch;
+}
+
+.container > .featureBox {
+    width: 200px;
+    height: 200px;
+}
+
+.elementSeperator {
+    padding: 2ch;
+}
+
+.elementSeperator > div {
+    height: 2px;
+    background-color: white;
+    width: 100%;
+}
+
+#billboardAd > picture > img {
+    width: 90%;
+    object-fit: contain;
+}
+
+#mainNavBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    z-index: 1000;
+}
+
+#mainPage {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 1rem 0rem 1rem;
+    text-align: center;
+}
+
+#mainFooter {
+    width: 100%;
+    height: 256px;
+    background-color: #000;
+}
+
+#mainNavBar .logo-clickable {
+    margin: 8px 32px 8px 48px;
+}
+
+#mainNavBar .navbar-links {
+    display: flex;
+    align-items: center;
+}
+
+#mainNavBar .navbar-links .links {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: color 0.3s;
+    white-space: nowrap
+}
+
+#mainNavBar .navbar-links > .links:hover{
+    color: #f00;
+}
+
+#mainNavBar .navbar-right .navbar-s-button:hover {
+    background-color: #f00;
+    color: #00ff00;
+}
+
+.bigButton:hover {
+    background-color: #f00;
+}
+
+#mainNavBar .navbar-right {
+    margin: 0px 48px 0px 0px;
+    display: flex;
+    align-items: center;
+}
+
+#mainNavBar .navbar-right .navbar-s-button {
+    color: #fff;
+    background-color: #aa0000;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    padding: 8px 20px;
+    border: 2px solid #aa0000;
+}
+
+.bigButton {
+    color: #fff;
+    background-color: #aa0000;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    padding: 12px 32px;
+    border: 2px solid #aa0000;
+}
+
+#mainNavBar .mobile-menu-icon {
+    padding: 16px;
+    margin: 8px;
+    cursor: pointer;
+}
+
+#mainNavBar .mobile-selected-page,
+#mainNavBar .mobile-navbar,
+#mainNavBar .mobile-menu-icon {
+    display: none;
+}
+
+.slideshowContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slideshowContainer .previousButton,
+.slideshowContainer .nextButton {
+    height: 64px;
+    cursor: pointer;
+}
+
+.slideshow {
+    width: 70%;
+    margin: 0px auto;
+    overflow: hidden;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.view > picture {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.5s ease-in-out;
+}
+
+.view img {
+    width: 100px;
+    height: auto;
+    object-fit: contain;
+}
+
+.dotsContainer {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin: 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: #333;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        background-color: #fff;
+        color: #111;
+    }
+
+    #mainNavBar {
+        background-color: #ddd;
+    }
+
+    #mainNavBar .mobile-menu-icon {
+        filter: invert();
+    }
+
+    #mainNavBar .navbar-links .links {
+        color: #111;
+    }
+
+    .elementSeperator > div {
+        background-color: black;
+    }
+
+    .featureImg {
+        filter: invert();
+    }
+
+    #mainFooter {
+        background-color: #666;
+    }
+    
+}
+
+@media screen and (max-width: 799px) {
+    #mainNavBar .navbar-links .links {
+        display: none;
+    }
+    
+    #mainNavBar .navbar-links .link-seperator {
+        display: none;
+    }
+    
+    #mainNavBar .mobile-selected-page,
+    #mainNavBar .mobile-navbar,
+    #mainNavBar .mobile-menu-icon {
+        display: block;
+    }
+
+    #mainNavBar .logo-clickable {
+        margin: 8px 16px 8px 38px;
+    }
+    
+    #mainNavBar .navbar-right {
+        margin: 0px 38px 0px 0px;
+    }
+}
