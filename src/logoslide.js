@@ -7,7 +7,12 @@ const nextButton = document.querySelector(".slideshowContainer .nextButton");
 
 let index = 0;
 const totalLogos = logos.length;
-const slideWidth = 120;
+
+function getSlideWidth(index) {
+    const logoWidth = logos[index >= totalLogos || index < 0 ? 0 : index].getBoundingClientRect().width;
+    const gap = parseFloat(window.getComputedStyle(slideshow).gap) || 0;
+    return logoWidth + gap;
+}
 
 let fclone = logos[totalLogos - 1].cloneNode(true);
     slideshow.prepend(fclone);
@@ -35,17 +40,13 @@ function updateDots() {
 
 function goToSlide(newIndex) {
     index = newIndex;
-    slideshow.style.transition = "transform 0.5s ease-in-out";
-    slideshow.style.transform = `translateX(${-(index + 1) * slideWidth}px)`;
-    updateDots();
+    updateSlide();
 }
 
 function stepToSlide(step) {
     index += step;
-
-    slideshow.style.transition = "transform 0.5s ease-in-out";
-    slideshow.style.transform = `translateX(${-(index + 1) * slideWidth}px)`;
-    updateDots();
+    updateSlide();
+    const slideWidth = getSlideWidth(index);
 
     if (index >= totalLogos) {
         setTimeout(() => {
@@ -66,6 +67,14 @@ function stepToSlide(step) {
     }
 }
 
+function updateSlide()
+{
+    const slideWidth = getSlideWidth(index);
+    slideshow.style.transition = "transform 0.5s ease-in-out";
+    slideshow.style.transform = `translateX(${-(index + 1) * slideWidth}px)`;
+    updateDots();
+}
+
 dots.forEach(dot => {
     dot.addEventListener("click", (e) => {
         let newIndex = parseInt(e.target.getAttribute("data-index"));
@@ -75,5 +84,7 @@ dots.forEach(dot => {
 
 nextButton.addEventListener('click', () => stepToSlide(1))
 previousButton.addEventListener('click', () => stepToSlide(-1))
-goToSlide(3);
+window.addEventListener("load", () => {
+    goToSlide(0);
+});
 updateDots();

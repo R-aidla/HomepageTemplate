@@ -7,25 +7,33 @@
     <link rel="stylesheet" href="styles.css" />
     <script type="module" src="navbar.js"></script>
     <script type="module" src="logoslide.js"></script>
+    <script type="module" src="billboardSlide.js"></script>
   </head>
   <body>
     <div id="mainNavBar">
-        <div class="navbar-links">
-            <a class="logo-clickable" href="/">
-                <picture>
-                    <img src="images/logo.png?width=80" alt="Logo" class="navbar-logo">
-                </picture>
-            </a>
-            <div class="mobile-dropdown">
-
+        <div class="navbar">
+            <div class="navbar-links">
+                <a class="logo-clickable" href="/">
+                    <picture>
+                        <img src="images/logo.png?width=80" alt="Logo" class="navbar-logo">
+                    </picture>
+                </a>
             </div>
+        </div>
+        <div class="navbar-dropdown hidden">
+
         </div>
     </div>
     <div id="mainPage">
-        <div id="billboardAd">
-            <picture>
-                <img src="images/placeholders/placeholder512wide.png" alt="Advert" class="ad">
-            </picture>
+        <div class="billboardWrapper">
+            <div id="billboardAds">
+                <picture>
+                    <img src="images/placeholders/placeholder512wide.png" alt="Advert" class="ad">
+                    <img src="images/billboard/billboard1.png" alt="Advert" class="ad">
+                    <img src="images/billboard/billboard2.png" alt="Advert" class="ad">
+                    <img src="images/billboard/billboard3.png" alt="Advert" class="ad">
+                </picture>
+            </div>
         </div>
         <div class="elementSeperator"><div></div></div>
         <div class="container">
@@ -94,13 +102,13 @@
             <div class="slideshow">
                 <div class="view">
                     <picture>
-                        <img src="images/css_logo.png" alt="Logo 1">
-                        <img src="images/google_logo.png" alt="Logo 2">
-                        <img src="images/html_logo.png" alt="Logo 3">
-                        <img src="images/javascript_logo.png" alt="Logo 4">
-                        <img src="images/parcel_logo.png" alt="Logo 5">
-                        <img src="images/school_logo.png" alt="Logo 6">
-                        <img src="images/logo.png" alt="Logo 7">
+                        <img class="small_img" src="images/css_logo.png" alt="Logo 1">
+                        <img class="small_img" src="images/google_logo.png" alt="Logo 2">
+                        <img class="small_img" src="images/html_logo.png" alt="Logo 3">
+                        <img class="small_img" src="images/javascript_logo.png" alt="Logo 4">
+                        <img class="small_img" src="images/parcel_logo.png" alt="Logo 5">
+                        <img class="small_img" src="images/school_logo.png" alt="Logo 6">
+                        <img class="small_img" src="images/logo.png" alt="Logo 7">
                     </picture>
                 </div>
                 <div class="dotsContainer">
@@ -111,7 +119,37 @@
         </div>
     </div>
     <div id="mainFooter">
-            
+        <div class="section left">
+            <h2>Wish to contact me?</h2>
+            <form action="/api/sendemail" method="post">
+                <label for="email">Email:</label><br>
+                <input type="text" id="email" name="email" placeholder="username@example.com" value="" required size="50"><br>
+                <label for="msg">Message:</label><br>
+                <textarea type="text" id="msg" name="msg" placeholder="Just as an example. Can't really send anything." required style="resize: none;" rows="4" cols="50"></textarea>
+                <button type="submit" class="sButton">Submit</button>
+                </form>
+        </div>
+        <div class="section center">
+            <h2>Extra Info</h2>
+            <a class="link" href="/">Game Development</a>
+            <a class="link" href="/">Software Solutions</a>
+            <a class="link" href="/">My Credit Card</a>
+            <a class="link" href="/">Criminal Record</a>
+        </div>
+        <div class="section right">
+            <h2>May join our newsletter?</h2>
+            <form action="/api/subscribeNews" method="post">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" placeholder="username@example.com" value="" required size="24">
+                <button type="submit" class="sButton">Subscribe</button>
+            </form>
+            <div class="elementSeperator"><div></div></div>
+            <p>We will keep you updated on new, up-coming projects!</p>
+        </div>
     </div>
+    <div id="extraFootNote">
+        <p>This is an example homepage made as an assignment. This can be reused, modified and distributed by anyone and with no required license. &copy; Rivo Aidla 2025</p>    
+    </div>
+    <a href="#" id="backToTop" class="sButton hidden">↑ Top</button>
   </body>
 </html>

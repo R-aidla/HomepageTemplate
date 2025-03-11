@@ -13,7 +13,7 @@ class Navbar {
     }
 
     render() {
-        const nav = document.querySelector("#mainNavBar");
+        const nav = document.querySelector("#mainNavBar .navbar");
                 
         const navLinks = document.querySelector("#mainNavBar .navbar-links")
         
@@ -23,7 +23,7 @@ class Navbar {
             link_sep.textContent = "/";    
 
             const link = document.createElement("a");
-            link.classList.add("links")
+            link.classList.add("link")
             link.href = item.url;
             link.textContent = item.label;
 
@@ -47,41 +47,35 @@ class Navbar {
         actionButton.textContent = "Subscribe";
         actionButton.classList.add("navbar-s-button");
 
-        // Mobile Navigation
-        const mobileNav = document.createElement("div");
-        mobileNav.classList.add("mobile-navbar");
+        // Compressed Navbar
 
         const dropdownIcon = document.createElement("img");
         dropdownIcon.src = this.menuIco;
         dropdownIcon.alt = "Menu";
         dropdownIcon.classList.add("mobile-menu-icon");
         dropdownIcon.addEventListener("click", () => {
-            mobileDropdown.classList.toggle("show");
+            navDropdown.classList.toggle("hidden");
+            if(!navDropdown.classList.contains("hidden"))
+                dropdownIcon.src = this.closeIco;
+            else
+                dropdownIcon.src = this.menuIco;
         });
 
-        const mobileDropdown = document.createElement("div");
-        mobileDropdown.classList.add("mobile-dropdown");
+        const navDropdown = document.querySelector("#mainNavBar .navbar-dropdown");
 
-        /*this.navItems.forEach(item => {
+        this.navItems.forEach(item => {
             const link = document.createElement("a");
             link.href = item.url;
             link.textContent = item.label;
-            link.classList.add("mobile-dropdown-link");
-            mobileDropdown.appendChild(link);
-        });*/
+            link.classList.add("link");
+            navDropdown.appendChild(link);
+        });
 
         rightSection.appendChild(dropdownIcon);
-        mobileNav.appendChild(mobileDropdown);
-
-        
-        
         rightSection.appendChild(actionButton);
         
         nav.appendChild(navLinks);
-        navLinks.appendChild(mobileNav);
         nav.appendChild(rightSection);
-
-        document.body.prepend(nav);
 
     }
 }
@@ -95,3 +89,21 @@ const navItems = [
 ];
 
 new Navbar(navItems);
+
+document.addEventListener("DOMContentLoaded", function () {
+    const backToTopButton = document.getElementById("backToTop");
+
+    window.addEventListener("scroll", function () {
+        if (window.scrollY > 200) { // Show button after scrolling 300px
+            backToTopButton.classList.add("show");
+            backToTopButton.classList.remove("hidden");
+        } else {
+            backToTopButton.classList.add("hidden");
+            backToTopButton.classList.remove("show");
+        }
+    });
+
+    backToTopButton.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+});
